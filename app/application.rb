@@ -3,6 +3,7 @@ require 'rho/rhoapplication'
 class AppApplication < Rho::RhoApplication
   
   def initialize
+    @@toolbar = nil
     super
     @default_menu = { "Home" => :home, 
                       "Refresh" => :refresh, 
@@ -25,6 +26,7 @@ end
     #GeoLocation.set_notification("/app/Settings/geo_callback", "")
     
     System.set_push_notification("/app/Settings/push_callback", "")
+    Alert.show_popup "App Activated"
   end
 
   def on_deactivate_app
